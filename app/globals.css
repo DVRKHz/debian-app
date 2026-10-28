@@ -4,6 +4,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: page-transition-out 140ms ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: page-transition-in 220ms ease-out both;
+}
+
+@keyframes page-transition-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-transition-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
