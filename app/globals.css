@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply flex min-h-screen flex-col font-sans transition-colors duration-300;
+}
+
+:focus-visible {
+  outline: 2px solid #0035c7;
+  outline-offset: 3px;
+}
+
+.dark :focus-visible {
+  outline-color: #8ab4f8;
+}
+
+.dark .text-debian {
+  @apply text-debian-light;
+}
+
+.dark .text-debian-link {
+  @apply text-debian-link-dark;
+}
+
+.dark .hover\:text-debian-link:hover {
+  @apply text-debian-link-dark;
+}
+
+.dark .hover\:text-debian-link-hover:hover {
+  @apply text-debian-link-dark-hover;
+}
+
+::selection {
+  background: #c70036;
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(0 0 0 / 10%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c70036;
+  border-radius: 4px;
+}
+
+.glow-effect {
+  box-shadow: 0 0 35px -5px rgb(199 0 54 / 30%);
+}
+
+.glow-effect:hover {
+  box-shadow: 0 0 50px 0 rgb(199 0 54 / 45%);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ff5c7c 0%, #e60042 52%, #38b7c7 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -webkit-text-fill-color: transparent;
+}
+
+.light .gradient-text {
+  background-image: linear-gradient(
+    90deg,
+    #c70036 0%,
+    #a5002d 52%,
+    #007986 100%
+  );
+}
+
+.debian-wallpaper {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(56 183 199 / 12%), transparent 58%),
+    radial-gradient(ellipse at 18% 55%, rgb(56 183 199 / 7%), transparent 48%),
+    radial-gradient(ellipse at 82% 45%, rgb(199 0 54 / 7%), transparent 48%),
+    linear-gradient(180deg, rgb(19 91 112 / 5%), transparent 72%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 100%);
+}
+
+.light .debian-wallpaper {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(0 121 134 / 8%), transparent 58%),
+    radial-gradient(ellipse at 18% 55%, rgb(0 121 134 / 5%), transparent 48%),
+    radial-gradient(ellipse at 82% 45%, rgb(199 0 54 / 4%), transparent 48%),
+    linear-gradient(180deg, rgb(19 91 112 / 3%), transparent 72%);
+}

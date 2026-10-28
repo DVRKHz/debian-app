@@ -1,0 +1,34 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/releases/layout,_N_T_/releases/page,_N_T_/releases"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/releases/__PAGE__"
+  ],
+  "prefetchHints": {
+    "hints": 64,
+    "slots": {
+      "children": {
+        "hints": 96,
+        "slots": {
+          "children": {
+            "hints": 160,
+            "slots": null
+          }
+        }
+      }
+    }
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/111e46d08977cb7d9ccd345012832cfdc803c7c61f612641fa57c38526d3b7dd/$/releases",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/releases/page"
+    },
+    "isFallback": false
+  }
+}
