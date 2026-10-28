@@ -1,31 +1,19 @@
 "use client";
 
 import { ArrowUpRight, Newspaper } from "lucide-react";
-import { localizedNewsDates, useLocale } from "@/lib/i18n";
+import type { DebianNewsItem } from "@/lib/debian-news";
+import { useLocale } from "@/lib/i18n";
 
-const newsItems = [
-  {
-    date: "2026-09-12",
-    title: "news1Title",
-    description: "news1Description",
-    href: "https://www.debian.org/News/2026/20260912",
-  },
-  {
-    date: "2026-08-31",
-    title: "news2Title",
-    description: "news2Description",
-    href: "https://www.debian.org/News/2026/20260831",
-  },
-  {
-    date: "2026-08-07",
-    title: "news3Title",
-    description: "news3Description",
-    href: "https://www.debian.org/News/2026/20260807",
-  },
-] as const;
-
-export function News() {
+export function News({
+  items,
+  hasSourceErrors,
+}: {
+  items: DebianNewsItem[];
+  hasSourceErrors: boolean;
+}) {
   const { locale, t } = useLocale();
+  const dateFormatter = new Intl.DateTimeFormat(locale, { dateStyle: "medium" });
+
   return (
     <section
       id="news"
@@ -53,8 +41,18 @@ export function News() {
           </a>
         </div>
 
+        {hasSourceErrors && (
+          <p
+            role="status"
+            className="mb-6 text-sm text-slate-400 dark:text-slate-400 light:text-slate-600"
+          >
+            Debian project news are temporarily unavailable. Please try again
+            later.
+          </p>
+        )}
+
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {newsItems.map((item, index) => (
+          {items.map((item) => (
             <article
               key={item.href}
               className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-6 dark:border-slate-800 dark:bg-slate-900/60 light:border-slate-200 light:bg-white"
@@ -63,14 +61,16 @@ export function News() {
                 dateTime={item.date}
                 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-400 light:text-slate-600"
               >
-                {localizedNewsDates[locale][index]}
+                {dateFormatter.format(new Date(`${item.date}T12:00:00Z`))}
               </time>
-              <h3 className="mb-3 text-lg font-bold text-slate-100 dark:text-slate-100 light:text-slate-900">
-                {t(item.title)}
+              <h3 className="mb-3 line-clamp-3 break-words text-lg font-bold text-slate-100 dark:text-slate-100 light:text-slate-900">
+                {item.title}
               </h3>
-              <p className="mb-6 flex-1 text-sm leading-relaxed text-slate-400 dark:text-slate-400 light:text-slate-600">
-                {t(item.description)}
-              </p>
+              {item.description && (
+                <p className="mb-6 line-clamp-4 flex-1 break-words text-sm leading-relaxed text-slate-400 dark:text-slate-400 light:text-slate-600">
+                  {item.description}
+                </p>
+              )}
               <a
                 href={item.href}
                 target="_blank"
@@ -82,6 +82,14 @@ export function News() {
               </a>
             </article>
           ))}
+          {items.length === 0 && (
+            <p
+              role="status"
+              className="text-sm text-slate-400 dark:text-slate-400 light:text-slate-600"
+            >
+              No Debian project news are available right now.
+            </p>
+          )}
         </div>
       </div>
     </section>
