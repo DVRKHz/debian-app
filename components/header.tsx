@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Download, Languages, Menu, Moon, Search, Sun, X } from "lucide-react";
+import { Languages, Menu, Moon, Search, Sun, X } from "lucide-react";
 import { DebianMark } from "@/components/debian-mark";
 import {
   languageControlLabels,
@@ -251,14 +251,6 @@ export function Header() {
               <Search className="h-4 w-4" aria-hidden="true" />
             </button>
           </form>
-          <a
-            href="/download"
-            onClick={() => setMenuOpen(false)}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-debian py-3 font-semibold text-white"
-          >
-            <Download className="h-5 w-5" />
-            <span>{t("getDebian")}</span>
-          </a>
         </nav>
       )}
     </header>
