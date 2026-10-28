@@ -1,15 +1,51 @@
 "use client";
 
-import { type FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Download, Languages, Menu, Moon, Search, Sun, X } from "lucide-react";
 import { DebianMark } from "@/components/debian-mark";
 import {
   languageControlLabels,
+  type Locale,
   localeNames,
   locales,
   systemLanguageLabels,
   useLocale,
 } from "@/lib/i18n";
+
+const debianSearchLanguages: Record<Locale, string> = {
+  ar: "ar",
+  bg: "bg",
+  ca: "ca",
+  "zh-CN": "zh-cn",
+  "zh-TW": "zh-tw",
+  hr: "hr",
+  cs: "cs",
+  da: "da",
+  nl: "nl",
+  en: "en",
+  fi: "fi",
+  fr: "fr",
+  gl: "gl",
+  de: "de",
+  el: "el",
+  hu: "hu",
+  id: "id",
+  it: "it",
+  ja: "ja",
+  ko: "ko",
+  nb: "nb",
+  fa: "fa",
+  pl: "pl",
+  pt: "pt",
+  ro: "ro",
+  ru: "ru",
+  sk: "sk",
+  es: "es",
+  sv: "sv",
+  tr: "tr",
+  uk: "uk",
+  vi: "vi",
+};
 
 const links = [
   { href: "https://bits.debian.org/", label: "Blog" },
@@ -23,8 +59,6 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchMessage, setSearchMessage] = useState("");
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("theme");
@@ -40,33 +74,6 @@ export function Header() {
     document.documentElement.classList.toggle("light", !nextIsDark);
     window.localStorage.setItem("theme", nextIsDark ? "dark" : "light");
     setIsDark(nextIsDark);
-  }
-
-  function searchPage(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const query = searchQuery.trim().toLocaleLowerCase();
-
-    if (!query) {
-      setSearchMessage(t("enterSearch"));
-      return;
-    }
-
-    const matchingSection = Array.from(
-      document.querySelectorAll<HTMLElement>("main section"),
-    ).find((section) =>
-      section.innerText.toLocaleLowerCase().includes(query),
-    );
-
-    if (!matchingSection) {
-      setSearchMessage(t("noSections", { query: searchQuery.trim() }));
-      return;
-    }
-
-    const heading =
-      matchingSection.querySelector("h1, h2, h3")?.textContent?.trim() ??
-      t("search");
-    matchingSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    setSearchMessage(t("showing", { heading }));
   }
 
   return (
@@ -98,22 +105,27 @@ export function Header() {
         <div className="ml-auto flex min-w-0 items-center gap-2 sm:gap-3">
           <form
             role="search"
-            onSubmit={searchPage}
+            action="https://search.debian.org/"
+            method="get"
+            target="_blank"
+            rel="noreferrer"
             className="flex min-w-0 items-center"
           >
             <label htmlFor="site-search" className="sr-only">
-              {t("searchPage")}
+              {t("search")}
             </label>
+            <input
+              type="hidden"
+              name="DB"
+              value={debianSearchLanguages[locale]}
+            />
             <div className="flex h-10 w-24 items-center gap-2 rounded-xl border border-slate-800 bg-slate-900/50 px-3 text-slate-400 transition-colors focus-within:border-debian sm:w-48 lg:w-56 dark:border-slate-500 dark:bg-slate-900/50 dark:text-slate-400 dark:focus-within:border-debian-light light:border-slate-500 light:bg-slate-100 light:text-slate-600">
               <Search className="h-4 w-4 shrink-0" aria-hidden="true" />
               <input
                 id="site-search"
                 type="search"
-                value={searchQuery}
-                onChange={(event) => {
-                  setSearchQuery(event.target.value);
-                  setSearchMessage("");
-                }}
+                name="q"
+                required
                 placeholder={t("search")}
                 className="min-w-0 flex-1 bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500 dark:text-slate-100 dark:placeholder:text-slate-400 light:text-slate-800 light:placeholder:text-slate-600"
               />
@@ -121,9 +133,6 @@ export function Header() {
             <button type="submit" className="sr-only">
               {t("search")}
             </button>
-            <span className="sr-only" role="status" aria-live="polite">
-              {searchMessage}
-            </span>
           </form>
           <div className="relative">
             <button
@@ -209,32 +218,34 @@ export function Header() {
           ))}
           <form
             role="search"
-            onSubmit={(event) => {
-              searchPage(event);
-              setMenuOpen(false);
-            }}
+            action="https://search.debian.org/"
+            method="get"
+            target="_blank"
+            rel="noreferrer"
             className="flex items-center gap-2 py-2"
           >
             <label htmlFor="mobile-site-search" className="sr-only">
-              {t("searchPage")}
+              {t("search")}
             </label>
+            <input
+              type="hidden"
+              name="DB"
+              value={debianSearchLanguages[locale]}
+            />
             <div className="flex h-11 min-w-0 flex-1 items-center gap-2 rounded-xl border border-slate-800 bg-slate-900/50 px-3 text-slate-400 focus-within:border-debian dark:border-slate-500 dark:bg-slate-900/50 dark:focus-within:border-debian-light light:border-slate-500 light:bg-slate-100 light:text-slate-600">
               <Search className="h-4 w-4 shrink-0" aria-hidden="true" />
               <input
                 id="mobile-site-search"
                 type="search"
-                value={searchQuery}
-                onChange={(event) => {
-                  setSearchQuery(event.target.value);
-                  setSearchMessage("");
-                }}
-                placeholder={t("searchPage")}
+                name="q"
+                required
+                placeholder={t("search")}
                 className="min-w-0 flex-1 bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500 dark:text-slate-100 dark:placeholder:text-slate-400 light:text-slate-800 light:placeholder:text-slate-600"
               />
             </div>
             <button
               type="submit"
-              aria-label={t("searchPage")}
+              aria-label={t("search")}
               className="rounded-xl bg-debian p-3 text-white"
             >
               <Search className="h-4 w-4" aria-hidden="true" />
