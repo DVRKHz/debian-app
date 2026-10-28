@@ -32,7 +32,7 @@ type DownloadSelectorProps = {
 };
 
 const selectClass =
-  "w-full rounded-xl border border-slate-500 bg-slate-950 px-4 py-3 text-slate-200 focus:border-debian focus:outline-none dark:border-slate-500 dark:bg-slate-950 dark:text-slate-200 dark:focus:border-debian-light light:border-slate-500 light:bg-slate-50 light:text-slate-800";
+  "min-w-0 w-full rounded-xl border border-slate-500 bg-slate-950 px-3 py-3 text-sm text-slate-200 focus:border-debian focus:outline-none dark:border-slate-500 dark:bg-slate-950 dark:text-slate-200 dark:focus:border-debian-light light:border-slate-500 light:bg-slate-50 light:text-slate-800";
 
 export function DownloadSelector({
   config,
@@ -101,7 +101,7 @@ export function DownloadSelector({
         </div>
 
         <div className="mx-auto max-w-4xl rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900 light:border-slate-200 light:bg-white sm:p-8">
-          <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-400 light:text-slate-600">
               <span className="mb-2 block">{t("releaseField")}</span>
               <select
@@ -130,15 +130,15 @@ export function DownloadSelector({
                 }}
                 className={selectClass}
               >
-                <option value="amd64">{t("pc64")}</option>
-                <option value="arm64">{t("arm64")}</option>
-                <option value="armhf">{t("armhf")}</option>
-                <option value="ppc64el">{t("power")}</option>
-                <option value="riscv64">{t("riscV")}</option>
-                <option value="s390x">{t("s390x")}</option>
+                <option value="amd64">amd64 (64-bit PC)</option>
+                <option value="arm64">arm64 / AArch64</option>
+                <option value="armhf">armhf (ARM hard-float)</option>
+                <option value="ppc64el">ppc64el (POWER)</option>
+                <option value="riscv64">riscv64 (RISC-V)</option>
+                <option value="s390x">s390x (IBM Z)</option>
               </select>
             </label>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-400 light:text-slate-600">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-400 light:text-slate-600 md:col-span-2">
               <span className="mb-2 block">{t("installerField")}</span>
               <select
                 value={config.media}
@@ -147,9 +147,11 @@ export function DownloadSelector({
                 }
                 className={selectClass}
               >
-                <option value="netinst">{t("netinst")}</option>
+                <option value="netinst">
+                  {t("netinst")} · {t("recommended")}
+                </option>
                 {config.architecture === "amd64" && (
-                  <>
+                  <optgroup label="Live ISO">
                     <option value="gnome">{t("gnome")}</option>
                     <option value="kde">{t("kde")}</option>
                     <option value="xfce">{t("xfce")}</option>
@@ -157,7 +159,7 @@ export function DownloadSelector({
                     <option value="lxqt">{t("lxqt")}</option>
                     <option value="mate">{t("mate")}</option>
                     <option value="cinnamon">{t("cinnamon")}</option>
-                  </>
+                  </optgroup>
                 )}
               </select>
             </label>
@@ -175,8 +177,13 @@ export function DownloadSelector({
                       ? t("downloadResolveError")
                       : t("resolvingDownload"))}
                 </div>
-                <div className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600">
+                <div className="flex items-center gap-2 text-xs text-slate-400 dark:text-slate-400 light:text-slate-600">
                   {mediaDescription}
+                  {config.media === "netinst" && (
+                    <span className="rounded-full bg-debian/10 px-2 py-0.5 font-semibold text-debian">
+                      {t("recommended")}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
