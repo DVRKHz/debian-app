@@ -528,6 +528,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.lang = locale;
     document.documentElement.dir = directionLocales.has(locale) ? "rtl" : "ltr";
+    document.title = `Debian — ${localeHeroAndHistory[locale].heroUniversal}`;
   }, [locale]);
 
   function setPreference(nextPreference: LanguagePreference) {
