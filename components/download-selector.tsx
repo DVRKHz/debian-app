@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Disc, DownloadCloud } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Disc, DownloadCloud, Eye, X } from "lucide-react";
+import { DesktopPreview } from "@/components/desktop-preview";
 import {
   Architecture,
   DownloadConfig,
@@ -39,6 +40,7 @@ export function DownloadSelector({
   onConfigChange,
 }: DownloadSelectorProps) {
   const { t } = useLocale();
+  const previewDialogRef = useRef<HTMLDialogElement>(null);
   const mediaDescription = t(config.media);
   const configKey = `${config.branch}:${config.architecture}:${config.media}`;
   const [resolvedDownload, setResolvedDownload] = useState<
@@ -138,9 +140,25 @@ export function DownloadSelector({
                 <option value="s390x">s390x (IBM Z)</option>
               </select>
             </label>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-400 light:text-slate-600 md:col-span-2">
-              <span className="mb-2 block">{t("installerField")}</span>
+            <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-400 light:text-slate-600 md:col-span-2">
+              <div className="mb-2 flex min-h-7 items-center justify-between gap-3">
+                <label htmlFor="installer-select">{t("installerField")}</label>
+                {config.media !== "netinst" &&
+                  config.architecture === "amd64" && (
+                    <button
+                      type="button"
+                      onClick={() => previewDialogRef.current?.showModal()}
+                      aria-haspopup="dialog"
+                      aria-controls="desktop-preview-dialog"
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-lg px-2 py-1 text-[11px] font-semibold normal-case tracking-normal text-debian-link transition-colors hover:bg-slate-800/70 hover:text-debian-link-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-debian dark:text-debian-link-dark dark:hover:bg-slate-800/70 dark:hover:text-debian-link-dark-hover light:hover:bg-white"
+                    >
+                      <Eye className="h-3.5 w-3.5" aria-hidden="true" />
+                      {t("previewDesktop")}
+                    </button>
+                  )}
+              </div>
               <select
+                id="installer-select"
                 value={config.media}
                 onChange={(event) =>
                   update("media", event.target.value as Media)
@@ -162,8 +180,45 @@ export function DownloadSelector({
                   </optgroup>
                 )}
               </select>
-            </label>
+            </div>
           </div>
+
+          {config.media !== "netinst" && config.architecture === "amd64" && (
+            <dialog
+              ref={previewDialogRef}
+              id="desktop-preview-dialog"
+              aria-label={mediaDescription}
+              onCancel={(event) => {
+                event.preventDefault();
+                event.currentTarget.close();
+              }}
+              onClick={(event) => {
+                if (event.target === event.currentTarget) {
+                  event.currentTarget.close();
+                }
+              }}
+              className="m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-3xl overflow-y-auto rounded-2xl border border-slate-700 bg-slate-900 p-0 text-slate-100 shadow-2xl backdrop:bg-slate-950/75 backdrop:backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 light:border-slate-300 light:bg-white light:text-slate-900"
+            >
+              <div className="p-3 sm:p-5">
+                <div className="mb-3 flex items-center justify-between gap-4">
+                  <h2 className="text-sm font-bold">{mediaDescription}</h2>
+                  <button
+                    type="button"
+                    onClick={() => previewDialogRef.current?.close()}
+                    aria-label={t("cancel")}
+                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-800 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-debian dark:hover:bg-slate-800 light:hover:bg-slate-100 light:hover:text-slate-900"
+                  >
+                    <X className="h-5 w-5" aria-hidden="true" />
+                  </button>
+                </div>
+                <DesktopPreview
+                  key={config.media}
+                  media={config.media}
+                  label={mediaDescription}
+                />
+              </div>
+            </dialog>
+          )}
 
           <div className="flex flex-col items-center justify-between gap-4 rounded-xl border border-slate-800/80 bg-slate-950/70 p-5 dark:border-slate-800/80 dark:bg-slate-950/70 light:border-slate-200 light:bg-slate-50 sm:flex-row">
             <div className="flex items-center gap-3">

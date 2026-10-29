@@ -163,6 +163,7 @@ const english = {
   photoSlide: "slide",
   photoPosition: "{index} of {total}",
   showPhoto: "Show photo {index}: {title}",
+  previewDesktop: "Preview desktop",
   footerProject: "Debian Project",
   trademark:
     "Debian is a registered trademark owned by Software in the Public Interest, Inc.",
@@ -223,6 +224,40 @@ const localeHeroAndHistory: Record<
 };
 
 export type MessageKey = keyof typeof english;
+const desktopPreviewLabels: Record<Locale, string> = {
+  ar: "معاينة سطح المكتب",
+  bg: "Преглед на работния плот",
+  ca: "Previsualitza l'escriptori",
+  "zh-CN": "预览桌面",
+  "zh-TW": "預覽桌面",
+  hr: "Pregled radne površine",
+  cs: "Náhled pracovního prostředí",
+  da: "Forhåndsvis skrivebord",
+  nl: "Bureaublad bekijken",
+  en: "Preview desktop",
+  fi: "Esikatsele työpöytää",
+  fr: "Aperçu du bureau",
+  gl: "Vista previa do escritorio",
+  de: "Desktop-Vorschau",
+  el: "Προεπισκόπηση επιφάνειας εργασίας",
+  hu: "Asztal előnézete",
+  id: "Pratinjau desktop",
+  it: "Anteprima del desktop",
+  ja: "デスクトップをプレビュー",
+  ko: "데스크톱 미리 보기",
+  nb: "Forhåndsvis skrivebordet",
+  fa: "پیش‌نمایش میزکار",
+  pl: "Podgląd pulpitu",
+  pt: "Pré-visualizar ambiente de trabalho",
+  ro: "Previzualizare desktop",
+  ru: "Предпросмотр рабочего стола",
+  sk: "Náhľad pracovnej plochy",
+  es: "Vista previa del escritorio",
+  sv: "Förhandsgranska skrivbordet",
+  tr: "Masaüstü önizlemesi",
+  uk: "Попередній перегляд стільниці",
+  vi: "Xem trước màn hình nền",
+};
 type TranslationCatalog<Keys extends readonly MessageKey[]> = Partial<
   Record<
     Exclude<Locale, "en">,
@@ -675,7 +710,9 @@ export function useLocale() {
       locale,
       t: (key: MessageKey, values?: Record<string, string>) => {
         let value =
-          key === "heroUniversal" || key === "statYears"
+          key === "previewDesktop"
+            ? desktopPreviewLabels[locale]
+            : key === "heroUniversal" || key === "statYears"
             ? localeHeroAndHistory[locale][key]
             : result[key];
         if (key === "heroDownload") {
