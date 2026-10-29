@@ -140,6 +140,29 @@ const english = {
   developerTitle: "Developer Corner",
   developerDescription:
     "Learn how to maintain packages, contribute code, and sponsor infrastructure.",
+  communityLinksTitle: "The Community",
+  communityPeople: "People",
+  communityPeopleDescription: "Who we are and what we do",
+  communityPhilosophy: "Our philosophy",
+  communityPhilosophyDescription: "Why and how we do it",
+  communityContribute: "Get involved, contribute",
+  communityContributeDescription: "How you can join in",
+  communityMore: "More",
+  communityMoreDescription: "More information about the Debian community",
+  operatingSystemTitle: "The Operating System",
+  whyDebian: "Why Debian",
+  whyDebianDescription: "What makes Debian special",
+  userSupport: "User support",
+  userSupportDescription: "Get help and documentation",
+  securityUpdates: "Security updates",
+  securityUpdatesDescription: "Debian Security Advisories (DSA)",
+  operatingSystemMoreDescription: "More links about downloads and software",
+  communityGalleryTitle: "The Debian community in pictures",
+  previousPhotos: "Previous photos",
+  nextPhotos: "Next photos",
+  photoSlide: "slide",
+  photoPosition: "{index} of {total}",
+  showPhoto: "Show photo {index}: {title}",
   footerProject: "Debian Project",
   trademark:
     "Debian is a registered trademark owned by Software in the Public Interest, Inc.",
@@ -449,6 +472,49 @@ const descriptionTranslations: TranslationCatalog<typeof descriptionKeys> = {
   vi: ["Kiểm thử nghiêm ngặt và cập nhật đáng tin cậy cho hệ thống trọng yếu.", "DFSG bảo đảm tự do phần mềm, quyền riêng tư và hợp tác mở.", "Từ máy chủ hiện đại đến thiết bị cũ và đám mây.", "Cập nhật bảo mật đã kiểm thử cho máy chủ và môi trường sản xuất.", "Gói phần mềm mới hơn trong khi chuẩn bị bản Ổn định tiếp theo.", "Nhánh phát triển liên tục dành cho nhà phát triển và cộng tác viên Linux.", "Bản cập nhật điểm mới nhất gồm sửa lỗi bảo mật và lỗi quan trọng.", "Hỗ trợ dài hạn Bullseye đã kết thúc; hãy lên kế hoạch nâng cấp.", "Hội nghị thường niên đã bế mạc và kỳ tiếp theo được công bố.", "Tham gia cùng tình nguyện viên, nhà phát triển và người dùng Debian.", "Hướng dẫn chính thức, cấu hình và tài liệu xử lý sự cố.", "Đặt câu hỏi, chia sẻ lời khuyên và kết nối người dùng.", "Báo cáo vấn đề và giúp cải thiện chất lượng gói.", "Tìm hiểu cách duy trì gói, đóng góp mã và hỗ trợ hạ tầng."],
 };
 
+const communityKeys = [
+  "communityLinksTitle", "communityPeople", "communityPeopleDescription",
+  "communityPhilosophy", "communityPhilosophyDescription", "communityContribute",
+  "communityContributeDescription", "communityMore", "communityMoreDescription",
+  "operatingSystemTitle", "whyDebian", "whyDebianDescription", "userSupport",
+  "userSupportDescription", "securityUpdates", "securityUpdatesDescription",
+  "operatingSystemMoreDescription", "communityGalleryTitle", "previousPhotos",
+  "nextPhotos", "photoSlide", "photoPosition", "showPhoto",
+] as const;
+const communityTranslations: TranslationCatalog<typeof communityKeys> = {
+  ar: ["المجتمع", "الأشخاص", "من نحن وماذا نفعل", "فلسفتنا", "لماذا وكيف نعمل", "شارك وساهم", "كيف يمكنك الانضمام", "المزيد", "مزيد من المعلومات عن مجتمع ديبيان", "نظام التشغيل", "لماذا ديبيان", "ما الذي يميز ديبيان", "دعم المستخدمين", "احصل على المساعدة والوثائق", "تحديثات الأمان", "تنبيهات أمان ديبيان (DSA)", "مزيد من الروابط حول التنزيلات والبرامج", "مجتمع ديبيان بالصور", "الصور السابقة", "الصور التالية", "شريحة", "{index} من {total}", "عرض الصورة {index}: {title}"],
+  bg: ["Общността", "Хората", "Кои сме и какво правим", "Нашата философия", "Защо и как го правим", "Включете се и допринесете", "Как можете да се присъедините", "Още", "Още за общността на Debian", "Операционната система", "Защо Debian", "Какво прави Debian специален", "Потребителска поддръжка", "Помощ и документация", "Актуализации на сигурността", "Известия за сигурността на Debian (DSA)", "Още връзки за изтегляния и софтуер", "Общността на Debian в снимки", "Предишни снимки", "Следващи снимки", "слайд", "{index} от {total}", "Покажи снимка {index}: {title}"],
+  ca: ["La comunitat", "Les persones", "Qui som i què fem", "La nostra filosofia", "Per què i com ho fem", "Participa i contribueix", "Com t'hi pots unir", "Més", "Més informació sobre la comunitat Debian", "El sistema operatiu", "Per què Debian", "Què fa especial Debian", "Suport als usuaris", "Ajuda i documentació", "Actualitzacions de seguretat", "Avisos de seguretat de Debian (DSA)", "Més enllaços sobre baixades i programari", "La comunitat Debian en imatges", "Imatges anteriors", "Imatges següents", "diapositiva", "{index} de {total}", "Mostra la imatge {index}: {title}"],
+  "zh-CN": ["社区", "成员", "我们是谁以及我们做什么", "我们的理念", "我们为何以及如何行动", "参与并贡献", "如何加入我们", "更多", "了解更多 Debian 社区信息", "操作系统", "为什么选择 Debian", "Debian 的独特之处", "用户支持", "获取帮助和文档", "安全更新", "Debian 安全公告（DSA）", "更多下载和软件相关链接", "Debian 社区照片", "上一张照片", "下一张照片", "幻灯片", "{index}/{total}", "显示照片 {index}：{title}"],
+  "zh-TW": ["社群", "成員", "我們是誰以及我們做什麼", "我們的理念", "我們為何以及如何行動", "參與並貢獻", "如何加入我們", "更多", "深入了解 Debian 社群", "作業系統", "為什麼選擇 Debian", "Debian 的特別之處", "使用者支援", "取得協助與文件", "安全性更新", "Debian 安全公告（DSA）", "更多下載與軟體相關連結", "Debian 社群照片", "上一張照片", "下一張照片", "投影片", "{index}/{total}", "顯示照片 {index}：{title}"],
+  hr: ["Zajednica", "Ljudi", "Tko smo i što radimo", "Naša filozofija", "Zašto i kako to radimo", "Uključite se i doprinesite", "Kako se možete pridružiti", "Više", "Više o Debianovoj zajednici", "Operacijski sustav", "Zašto Debian", "Po čemu je Debian poseban", "Korisnička podrška", "Pomoć i dokumentacija", "Sigurnosne nadogradnje", "Debianova sigurnosna upozorenja (DSA)", "Više poveznica za preuzimanja i softver", "Debianova zajednica u slikama", "Prethodne slike", "Sljedeće slike", "slajd", "{index} od {total}", "Prikaži sliku {index}: {title}"],
+  cs: ["Komunita", "Lidé", "Kdo jsme a co děláme", "Naše filozofie", "Proč a jak to děláme", "Zapojte se a přispějte", "Jak se můžete připojit", "Více", "Více informací o komunitě Debianu", "Operační systém", "Proč Debian", "Čím je Debian výjimečný", "Uživatelská podpora", "Nápověda a dokumentace", "Bezpečnostní aktualizace", "Bezpečnostní upozornění Debianu (DSA)", "Další odkazy ke stažení a softwaru", "Komunita Debianu na fotografiích", "Předchozí fotografie", "Další fotografie", "snímek", "{index} z {total}", "Zobrazit fotografii {index}: {title}"],
+  da: ["Fællesskabet", "Mennesker", "Hvem vi er, og hvad vi gør", "Vores filosofi", "Hvorfor og hvordan vi gør det", "Deltag og bidrag", "Sådan kan du være med", "Mere", "Mere om Debian-fællesskabet", "Operativsystemet", "Hvorfor Debian", "Det særlige ved Debian", "Brugersupport", "Få hjælp og dokumentation", "Sikkerhedsopdateringer", "Debians sikkerhedsmeddelelser (DSA)", "Flere links om downloads og software", "Debian-fællesskabet i billeder", "Forrige billeder", "Næste billeder", "dias", "{index} af {total}", "Vis billede {index}: {title}"],
+  nl: ["De gemeenschap", "Mensen", "Wie we zijn en wat we doen", "Onze filosofie", "Waarom en hoe we dat doen", "Doe mee en draag bij", "Zo kun je meedoen", "Meer", "Meer informatie over de Debian-gemeenschap", "Het besturingssysteem", "Waarom Debian", "Wat Debian bijzonder maakt", "Gebruikersondersteuning", "Hulp en documentatie", "Beveiligingsupdates", "Debian-beveiligingsadviezen (DSA)", "Meer links over downloads en software", "De Debian-gemeenschap in beeld", "Vorige foto's", "Volgende foto's", "dia", "{index} van {total}", "Foto {index} tonen: {title}"],
+  fi: ["Yhteisö", "Ihmiset", "Keitä olemme ja mitä teemme", "Filosofiamme", "Miksi ja miten toimimme", "Osallistu ja auta", "Näin pääset mukaan", "Lisää", "Lisätietoja Debian-yhteisöstä", "Käyttöjärjestelmä", "Miksi Debian", "Mikä tekee Debianista erityisen", "Käyttäjätuki", "Ohjeita ja dokumentaatiota", "Tietoturvapäivitykset", "Debianin tietoturvatiedotteet (DSA)", "Lisää linkkejä latauksiin ja ohjelmistoihin", "Debian-yhteisö kuvina", "Edelliset kuvat", "Seuraavat kuvat", "dia", "{index}/{total}", "Näytä kuva {index}: {title}"],
+  fr: ["La communauté", "Les personnes", "Qui nous sommes et ce que nous faisons", "Notre philosophie", "Pourquoi et comment nous agissons", "Participer et contribuer", "Comment nous rejoindre", "Plus", "En savoir plus sur la communauté Debian", "Le système d’exploitation", "Pourquoi Debian", "Ce qui rend Debian unique", "Assistance aux utilisateurs", "Obtenir de l’aide et de la documentation", "Mises à jour de sécurité", "Avis de sécurité Debian (DSA)", "Plus de liens sur les téléchargements et les logiciels", "La communauté Debian en images", "Photos précédentes", "Photos suivantes", "diapositive", "{index} sur {total}", "Afficher la photo {index} : {title}"],
+  gl: ["A comunidade", "As persoas", "Quen somos e que facemos", "A nosa filosofía", "Por que e como o facemos", "Participa e contribúe", "Como podes unirte", "Máis", "Máis información sobre a comunidade Debian", "O sistema operativo", "Por que Debian", "Que fai especial Debian", "Axuda ás persoas usuarias", "Axuda e documentación", "Actualizacións de seguridade", "Avisos de seguridade de Debian (DSA)", "Máis ligazóns sobre descargas e software", "A comunidade Debian en imaxes", "Imaxes anteriores", "Imaxes seguintes", "diapositiva", "{index} de {total}", "Amosar imaxe {index}: {title}"],
+  de: ["Die Gemeinschaft", "Menschen", "Wer wir sind und was wir tun", "Unsere Philosophie", "Warum und wie wir es tun", "Mitmachen und beitragen", "So kannst du mitmachen", "Mehr", "Weitere Informationen zur Debian-Gemeinschaft", "Das Betriebssystem", "Warum Debian", "Was Debian besonders macht", "Benutzerunterstützung", "Hilfe und Dokumentation", "Sicherheitsaktualisierungen", "Debian-Sicherheitsmitteilungen (DSA)", "Weitere Links zu Downloads und Software", "Die Debian-Gemeinschaft in Bildern", "Vorherige Fotos", "Nächste Fotos", "Folie", "{index} von {total}", "Foto {index} anzeigen: {title}"],
+  el: ["Η κοινότητα", "Άνθρωποι", "Ποιοι είμαστε και τι κάνουμε", "Η φιλοσοφία μας", "Γιατί και πώς το κάνουμε", "Συμμετέχετε και συνεισφέρετε", "Πώς μπορείτε να συμμετάσχετε", "Περισσότερα", "Περισσότερα για την κοινότητα Debian", "Το λειτουργικό σύστημα", "Γιατί Debian", "Τι κάνει το Debian ξεχωριστό", "Υποστήριξη χρηστών", "Βοήθεια και τεκμηρίωση", "Ενημερώσεις ασφάλειας", "Ανακοινώσεις ασφάλειας Debian (DSA)", "Περισσότεροι σύνδεσμοι για λήψεις και λογισμικό", "Η κοινότητα Debian σε εικόνες", "Προηγούμενες φωτογραφίες", "Επόμενες φωτογραφίες", "διαφάνεια", "{index} από {total}", "Εμφάνιση φωτογραφίας {index}: {title}"],
+  hu: ["A közösség", "Emberek", "Kik vagyunk és mit teszünk", "Filozófiánk", "Miért és hogyan tesszük", "Csatlakozz és járulj hozzá", "Így csatlakozhatsz", "Továbbiak", "További információ a Debian közösségéről", "Az operációs rendszer", "Miért a Debian", "Mitől különleges a Debian", "Felhasználói támogatás", "Segítség és dokumentáció", "Biztonsági frissítések", "Debian biztonsági közlemények (DSA)", "További hivatkozások letöltésekhez és szoftverekhez", "A Debian közösség képekben", "Előző képek", "Következő képek", "dia", "{index}/{total}", "{index}. kép megjelenítése: {title}"],
+  id: ["Komunitas", "Orang-orang", "Siapa kami dan apa yang kami lakukan", "Filosofi kami", "Mengapa dan bagaimana kami melakukannya", "Ikut terlibat dan berkontribusi", "Cara bergabung", "Lainnya", "Informasi lebih lanjut tentang komunitas Debian", "Sistem Operasi", "Mengapa Debian", "Keistimewaan Debian", "Dukungan pengguna", "Bantuan dan dokumentasi", "Pembaruan keamanan", "Penasihat Keamanan Debian (DSA)", "Tautan lain tentang unduhan dan perangkat lunak", "Komunitas Debian dalam gambar", "Foto sebelumnya", "Foto berikutnya", "slide", "{index} dari {total}", "Tampilkan foto {index}: {title}"],
+  it: ["La comunità", "Le persone", "Chi siamo e cosa facciamo", "La nostra filosofia", "Perché e come lo facciamo", "Partecipa e contribuisci", "Come puoi unirti", "Altro", "Altre informazioni sulla comunità Debian", "Il sistema operativo", "Perché Debian", "Cosa rende Debian speciale", "Supporto utenti", "Aiuto e documentazione", "Aggiornamenti di sicurezza", "Avvisi di sicurezza Debian (DSA)", "Altri link su download e software", "La comunità Debian in immagini", "Foto precedenti", "Foto successive", "diapositiva", "{index} di {total}", "Mostra foto {index}: {title}"],
+  ja: ["コミュニティ", "人々", "私たちについて、そして活動内容", "私たちの理念", "活動の理由と方法", "参加して貢献する", "参加方法", "もっと見る", "Debianコミュニティの詳細", "オペレーティングシステム", "Debianを選ぶ理由", "Debianの特長", "ユーザーサポート", "ヘルプとドキュメント", "セキュリティ更新", "Debianセキュリティ勧告（DSA）", "ダウンロードとソフトウェアに関するリンク", "写真で見るDebianコミュニティ", "前の写真", "次の写真", "スライド", "{total}枚中{index}枚目", "写真{index}を表示：{title}"],
+  ko: ["커뮤니티", "사람들", "우리는 누구이며 무엇을 하는가", "우리의 철학", "우리가 하는 이유와 방법", "참여하고 기여하기", "참여하는 방법", "더 보기", "Debian 커뮤니티에 대한 자세한 정보", "운영 체제", "Debian을 선택하는 이유", "Debian을 특별하게 만드는 것", "사용자 지원", "도움말 및 문서", "보안 업데이트", "Debian 보안 권고(DSA)", "다운로드 및 소프트웨어 관련 추가 링크", "사진으로 보는 Debian 커뮤니티", "이전 사진", "다음 사진", "슬라이드", "{total}개 중 {index}", "사진 {index} 표시: {title}"],
+  nb: ["Fellesskapet", "Mennesker", "Hvem vi er og hva vi gjør", "Vår filosofi", "Hvorfor og hvordan vi gjør det", "Bli med og bidra", "Slik kan du bli med", "Mer", "Mer informasjon om Debian-fellesskapet", "Operativsystemet", "Hvorfor Debian", "Hva som gjør Debian spesielt", "Brukerstøtte", "Hjelp og dokumentasjon", "Sikkerhetsoppdateringer", "Debians sikkerhetsmeldinger (DSA)", "Flere lenker om nedlastinger og programvare", "Debian-fellesskapet i bilder", "Forrige bilder", "Neste bilder", "lysbilde", "{index} av {total}", "Vis bilde {index}: {title}"],
+  fa: ["جامعه", "افراد", "ما که هستیم و چه می‌کنیم", "فلسفه ما", "چرا و چگونه این کار را انجام می‌دهیم", "مشارکت و همکاری", "چگونه می‌توانید همراه شوید", "بیشتر", "اطلاعات بیشتر درباره جامعه دبیان", "سیستم‌عامل", "چرا دبیان", "چه چیزی دبیان را ویژه می‌کند", "پشتیبانی کاربران", "دریافت راهنما و مستندات", "به‌روزرسانی‌های امنیتی", "اطلاعیه‌های امنیتی دبیان (DSA)", "پیوندهای بیشتر درباره دریافت و نرم‌افزار", "جامعه دبیان در تصاویر", "تصاویر قبلی", "تصاویر بعدی", "اسلاید", "{index} از {total}", "نمایش تصویر {index}: {title}"],
+  pl: ["Społeczność", "Ludzie", "Kim jesteśmy i czym się zajmujemy", "Nasza filozofia", "Dlaczego i jak to robimy", "Dołącz i wnieś swój wkład", "Jak możesz do nas dołączyć", "Więcej", "Więcej informacji o społeczności Debiana", "System operacyjny", "Dlaczego Debian", "Co wyróżnia Debiana", "Pomoc dla użytkowników", "Pomoc i dokumentacja", "Aktualizacje bezpieczeństwa", "Komunikaty bezpieczeństwa Debiana (DSA)", "Więcej odnośników do pobierania i oprogramowania", "Społeczność Debiana na zdjęciach", "Poprzednie zdjęcia", "Następne zdjęcia", "slajd", "{index} z {total}", "Pokaż zdjęcie {index}: {title}"],
+  pt: ["A comunidade", "As pessoas", "Quem somos e o que fazemos", "A nossa filosofia", "Por que e como o fazemos", "Participe e contribua", "Como pode juntar-se", "Mais", "Mais informações sobre a comunidade Debian", "O sistema operativo", "Porquê Debian", "O que torna Debian especial", "Apoio ao utilizador", "Ajuda e documentação", "Atualizações de segurança", "Avisos de segurança Debian (DSA)", "Mais ligações sobre transferências e software", "A comunidade Debian em imagens", "Imagens anteriores", "Imagens seguintes", "diapositivo", "{index} de {total}", "Mostrar imagem {index}: {title}"],
+  ro: ["Comunitatea", "Oamenii", "Cine suntem și ce facem", "Filosofia noastră", "De ce și cum facem acest lucru", "Implică-te și contribuie", "Cum te poți alătura", "Mai multe", "Mai multe despre comunitatea Debian", "Sistemul de operare", "De ce Debian", "Ce face Debian special", "Asistență pentru utilizatori", "Ajutor și documentație", "Actualizări de securitate", "Alerte de securitate Debian (DSA)", "Mai multe linkuri despre descărcări și software", "Comunitatea Debian în imagini", "Fotografiile anterioare", "Fotografiile următoare", "diapozitiv", "{index} din {total}", "Afișează fotografia {index}: {title}"],
+  ru: ["Сообщество", "Люди", "Кто мы и чем занимаемся", "Наша философия", "Почему и как мы это делаем", "Присоединяйтесь и участвуйте", "Как к нам присоединиться", "Ещё", "Подробнее о сообществе Debian", "Операционная система", "Почему Debian", "Чем Debian отличается", "Поддержка пользователей", "Помощь и документация", "Обновления безопасности", "Оповещения о безопасности Debian (DSA)", "Другие ссылки о загрузках и программном обеспечении", "Сообщество Debian в фотографиях", "Предыдущие фотографии", "Следующие фотографии", "слайд", "{index} из {total}", "Показать фото {index}: {title}"],
+  sk: ["Komunita", "Ľudia", "Kto sme a čo robíme", "Naša filozofia", "Prečo a ako to robíme", "Zapojte sa a prispejte", "Ako sa môžete zapojiť", "Viac", "Viac informácií o komunite Debianu", "Operačný systém", "Prečo Debian", "Čím je Debian výnimočný", "Podpora používateľov", "Pomoc a dokumentácia", "Bezpečnostné aktualizácie", "Bezpečnostné upozornenia Debianu (DSA)", "Ďalšie odkazy na stiahnutie a softvér", "Komunita Debianu na fotografiách", "Predchádzajúce fotografie", "Nasledujúce fotografie", "snímka", "{index} z {total}", "Zobraziť fotografiu {index}: {title}"],
+  es: ["La comunidad", "Las personas", "Quiénes somos y qué hacemos", "Nuestra filosofía", "Por qué y cómo lo hacemos", "Implícate y contribuye", "Cómo puedes unirte", "Más", "Más información sobre la comunidad Debian", "El sistema operativo", "Por qué Debian", "Qué hace especial a Debian", "Soporte a usuarios", "Obtener ayuda y documentación", "Actualizaciones de seguridad", "Avisos de seguridad de Debian (DSA)", "Más enlaces sobre descargas y software", "La comunidad Debian en imágenes", "Imágenes anteriores", "Imágenes siguientes", "diapositiva", "{index} de {total}", "Mostrar imagen {index}: {title}"],
+  sv: ["Gemenskapen", "Människorna", "Vilka vi är och vad vi gör", "Vår filosofi", "Varför och hur vi gör det", "Engagera dig och bidra", "Så här kan du delta", "Mer", "Mer information om Debian-gemenskapen", "Operativsystemet", "Varför Debian", "Vad som gör Debian speciellt", "Användarsupport", "Hjälp och dokumentation", "Säkerhetsuppdateringar", "Debians säkerhetsbulletiner (DSA)", "Fler länkar om hämtning och programvara", "Debian-gemenskapen i bilder", "Föregående bilder", "Nästa bilder", "bild", "{index} av {total}", "Visa bild {index}: {title}"],
+  tr: ["Topluluk", "İnsanlar", "Biz kimiz ve ne yapıyoruz", "Felsefemiz", "Bunu neden ve nasıl yapıyoruz", "Katılın ve katkıda bulunun", "Bize nasıl katılabilirsiniz", "Daha fazla", "Debian topluluğu hakkında daha fazla bilgi", "İşletim Sistemi", "Neden Debian", "Debian'ı özel kılan nedir", "Kullanıcı desteği", "Yardım ve belgeler", "Güvenlik güncellemeleri", "Debian Güvenlik Duyuruları (DSA)", "İndirmeler ve yazılım hakkında daha fazla bağlantı", "Fotoğraflarla Debian topluluğu", "Önceki fotoğraflar", "Sonraki fotoğraflar", "slayt", "{total} içinde {index}", "{index}. fotoğrafı göster: {title}"],
+  uk: ["Спільнота", "Люди", "Хто ми і чим займаємося", "Наша філософія", "Чому і як ми це робимо", "Долучайтеся та допомагайте", "Як ви можете долучитися", "Більше", "Докладніше про спільноту Debian", "Операційна система", "Чому Debian", "Що вирізняє Debian", "Підтримка користувачів", "Допомога й документація", "Оновлення безпеки", "Повідомлення безпеки Debian (DSA)", "Більше посилань про завантаження та програмне забезпечення", "Спільнота Debian у світлинах", "Попередні світлини", "Наступні світлини", "слайд", "{index} з {total}", "Показати світлину {index}: {title}"],
+  vi: ["Cộng đồng", "Mọi người", "Chúng tôi là ai và làm gì", "Triết lý của chúng tôi", "Vì sao và cách chúng tôi thực hiện", "Tham gia và đóng góp", "Cách bạn có thể tham gia", "Thêm", "Tìm hiểu thêm về cộng đồng Debian", "Hệ điều hành", "Vì sao chọn Debian", "Điều làm Debian đặc biệt", "Hỗ trợ người dùng", "Trợ giúp và tài liệu", "Cập nhật bảo mật", "Thông báo bảo mật Debian (DSA)", "Thêm liên kết về tải xuống và phần mềm", "Cộng đồng Debian qua ảnh", "Ảnh trước", "Ảnh tiếp theo", "trang chiếu", "{index}/{total}", "Hiển thị ảnh {index}: {title}"],
+};
+
 function validateCatalogs(
   keys: readonly MessageKey[],
   translations: Partial<Record<Locale, readonly string[]>>,
@@ -466,6 +532,7 @@ validateCatalogs(selectorKeys, selectorTranslations);
 validateCatalogs(detailKeys, detailTranslations);
 validateCatalogs(releaseNewsKeys, releaseNewsTranslations);
 validateCatalogs(descriptionKeys, descriptionTranslations);
+validateCatalogs(communityKeys, communityTranslations);
 const localeCatalogs: Array<Partial<Record<Locale, readonly string[]>>> = [
   coreTranslations,
   secondaryTranslations,
@@ -473,6 +540,7 @@ const localeCatalogs: Array<Partial<Record<Locale, readonly string[]>>> = [
   detailTranslations,
   releaseNewsTranslations,
   descriptionTranslations,
+  communityTranslations,
 ];
 for (const locale of locales) {
   if (locale !== "en" && localeCatalogs.some((catalog) => !catalog[locale])) {
@@ -593,6 +661,14 @@ export function useLocale() {
     if (descriptions) {
       descriptionKeys.forEach((key, index) => {
         if (descriptions[index]) result[key] = descriptions[index];
+      });
+    }
+    const community = catalogLocale
+      ? communityTranslations[catalogLocale]
+      : undefined;
+    if (community) {
+      communityKeys.forEach((key, index) => {
+        if (community[index]) result[key] = community[index];
       });
     }
     return {

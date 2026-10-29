@@ -21,13 +21,13 @@ export function Hero() {
           width="1920"
           height="823"
           fetchPriority="high"
-          className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+          className="hero-artwork absolute inset-0 -z-20 h-full w-full object-cover object-center"
         />
         <div
           aria-hidden="true"
           className="absolute inset-0 -z-10 bg-gradient-to-b from-slate-950/65 via-slate-950/55 to-slate-950/75 light:from-slate-950/25 light:via-slate-950/15 light:to-slate-950/30"
         />
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="hero-entrance mx-auto max-w-4xl text-center">
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-debian-teal/40 bg-debian-teal/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-debian-teal-dark dark:text-debian-teal light:border-white/35 light:bg-slate-950/25 light:text-white">
             <span className="h-2 w-2 animate-pulse rounded-full bg-debian-teal" />
             {t("heroBadge")}
@@ -71,7 +71,7 @@ export function Hero() {
             CC BY-SA 4.0
           </a>
         </p>
-        <div className="mt-12 grid grid-cols-2 gap-6 border-t border-slate-800/60 pt-10 dark:border-slate-800/60 light:border-slate-200 md:grid-cols-4">
+        <div className="hero-stats mt-12 grid grid-cols-2 gap-6 border-t border-slate-800/60 pt-10 dark:border-slate-800/60 light:border-slate-200 md:grid-cols-4">
           {stats.map(([value, labelKey]) => (
             <div key={labelKey} className="text-center">
               <div className="text-2xl font-extrabold text-slate-100 sm:text-3xl dark:text-white light:text-slate-900">

@@ -51,7 +51,7 @@ export function Releases() {
             return (
               <article
                 key={release.branch}
-                className={`relative flex flex-col justify-between rounded-2xl p-6 ${
+                className={`interactive-card relative flex flex-col justify-between rounded-2xl p-6 ${
                   isStable
                     ? "border-2 border-debian bg-slate-900/80 shadow-lg dark:bg-slate-900/80 light:bg-white"
                     : "border border-slate-800 bg-slate-900/60 dark:border-slate-800 dark:bg-slate-900/60 light:border-slate-200 light:bg-white"

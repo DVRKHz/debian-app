@@ -55,7 +55,7 @@ export function News({
           {items.map((item) => (
             <article
               key={item.href}
-              className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-6 dark:border-slate-800 dark:bg-slate-900/60 light:border-slate-200 light:bg-white"
+              className="interactive-card flex flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-6 dark:border-slate-800 dark:bg-slate-900/60 light:border-slate-200 light:bg-white"
             >
               <time
                 dateTime={item.date}

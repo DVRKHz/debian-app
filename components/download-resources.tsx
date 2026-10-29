@@ -121,7 +121,7 @@ export function DownloadResources() {
             return (
               <article
                 key={title}
-                className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 dark:border-slate-800 dark:bg-slate-900/50 light:border-slate-200 light:bg-white"
+                className="interactive-card rounded-2xl border border-slate-800 bg-slate-900/50 p-6 dark:border-slate-800 dark:bg-slate-900/50 light:border-slate-200 light:bg-white"
               >
                 <div className="mb-4 flex items-center gap-3">
                   <Icon
