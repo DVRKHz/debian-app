@@ -30,6 +30,11 @@ const english = {
   navReleases: "Releases",
   navNews: "News",
   navCommunity: "Community & Docs",
+  mainNavigation: "Main navigation",
+  headerBlog: "Blog",
+  headerMicronews: "Micronews",
+  headerPlanet: "Planet",
+  headerWiki: "Wiki",
   universalOS: "Universal OS",
   heroUniversal: "The Universal Operating System",
   home: "Debian home",
@@ -57,6 +62,7 @@ const english = {
   selectorTitle: "Quick Download Selector",
   selectorDescription:
     "Find the exact Debian image tailored for your hardware and use case.",
+  heroArtwork: "Artwork",
   releaseField: "1. Release Branch",
   architectureField: "2. Architecture",
   installerField: "3. Installer / Desktop",
@@ -83,6 +89,21 @@ const english = {
   downloadISO: "Download ISO",
   resolvingDownload: "Resolving the latest Debian image...",
   downloadResolveError: "Unable to resolve this Debian download. Please try again.",
+  resourcesTitle: "More ways to get Debian",
+  resourcesDescription:
+    "Find official images, cloud options, installation instructions, and verification resources.",
+  installationImages: "Installation images",
+  netinstImage: "64-bit PC netinst ISO",
+  dvdImages: "Complete DVD images",
+  liveImages: "Live images (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)",
+  cloudImages: "Cloud images",
+  officialCloudImages: "Official Debian cloud images",
+  cloudDocumentation: "Cloud platforms and documentation",
+  installVerify: "Install and verify",
+  downloadMirrors: "Download mirrors and torrents",
+  verifyImages: "Verify image authenticity",
+  installationManual: "Installation manual",
+  releaseNotes: "Release notes",
   featureEyebrow: "Built for Performance & Freedom",
   featureTitle: "Why Millions Choose Debian",
   featureStableTitle: "Unmatched Stability",
@@ -550,6 +571,133 @@ const communityTranslations: TranslationCatalog<typeof communityKeys> = {
   vi: ["Cộng đồng", "Mọi người", "Chúng tôi là ai và làm gì", "Triết lý của chúng tôi", "Vì sao và cách chúng tôi thực hiện", "Tham gia và đóng góp", "Cách bạn có thể tham gia", "Thêm", "Tìm hiểu thêm về cộng đồng Debian", "Hệ điều hành", "Vì sao chọn Debian", "Điều làm Debian đặc biệt", "Hỗ trợ người dùng", "Trợ giúp và tài liệu", "Cập nhật bảo mật", "Thông báo bảo mật Debian (DSA)", "Thêm liên kết về tải xuống và phần mềm", "Cộng đồng Debian qua ảnh", "Ảnh trước", "Ảnh tiếp theo", "trang chiếu", "{index}/{total}", "Hiển thị ảnh {index}: {title}"],
 };
 
+const downloadResourceKeys = [
+  "resourcesTitle",
+  "resourcesDescription",
+  "installationImages",
+  "netinstImage",
+  "dvdImages",
+  "liveImages",
+  "cloudImages",
+  "officialCloudImages",
+  "cloudDocumentation",
+  "installVerify",
+  "downloadMirrors",
+  "verifyImages",
+  "installationManual",
+  "releaseNotes",
+] as const;
+
+const downloadResourceTranslations: TranslationCatalog<typeof downloadResourceKeys> = {
+  ar: ["طرق أخرى للحصول على Debian", "اعثر على الصور الرسمية وخيارات السحابة وتعليمات التثبيت وموارد التحقق.", "صور التثبيت", "صورة netinst لأجهزة PC ‏64 بت", "صور DVD كاملة", "صور Live (GNOME وKDE وXfce وLXDE وCinnamon وMATE)", "صور السحابة", "صور Debian الرسمية للسحابة", "منصات السحابة والوثائق", "التثبيت والتحقق", "مرايا التنزيل وملفات التورنت", "التحقق من صحة الصورة", "دليل التثبيت", "ملاحظات الإصدار"],
+  bg: ["Още начини да получите Debian", "Намерете официални образи, облачни варианти, инструкции за инсталиране и ресурси за проверка.", "Инсталационни образи", "64-битов PC netinst ISO", "Пълни DVD образи", "Live образи (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Облачни образи", "Официални облачни образи на Debian", "Облачни платформи и документация", "Инсталиране и проверка", "Огледала за изтегляне и торенти", "Проверка на автентичността на образа", "Ръководство за инсталиране", "Бележки към изданието"],
+  ca: ["Més maneres d’obtenir Debian", "Troba imatges oficials, opcions al núvol, instruccions d’instal·lació i recursos de verificació.", "Imatges d’instal·lació", "ISO netinst per a PC de 64 bits", "Imatges completes de DVD", "Imatges Live (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Imatges per al núvol", "Imatges oficials de Debian per al núvol", "Plataformes i documentació al núvol", "Instal·lació i verificació", "Miralls de baixada i torrents", "Verifica l’autenticitat de la imatge", "Manual d’instal·lació", "Notes de la versió"],
+  "zh-CN": ["获取 Debian 的其他方式", "查找官方镜像、云端选项、安装说明和验证资源。", "安装镜像", "64 位 PC netinst ISO", "完整 DVD 镜像", "Live 镜像（GNOME、KDE、Xfce、LXDE、Cinnamon、MATE）", "云镜像", "Debian 官方云镜像", "云平台和文档", "安装与验证", "下载镜像站和种子", "验证镜像真实性", "安装手册", "发行说明"],
+  "zh-TW": ["取得 Debian 的其他方式", "尋找官方映像檔、雲端選項、安裝說明與驗證資源。", "安裝映像檔", "64 位元 PC netinst ISO", "完整 DVD 映像檔", "Live 映像檔（GNOME、KDE、Xfce、LXDE、Cinnamon、MATE）", "雲端映像檔", "Debian 官方雲端映像檔", "雲端平台與文件", "安裝與驗證", "下載鏡像站與種子", "驗證映像檔真實性", "安裝手冊", "發行說明"],
+  hr: ["Više načina za preuzimanje Debiana", "Pronađite službene slike, opcije za oblak te upute za instalaciju i provjeru.", "Instalacijske slike", "64-bitni PC netinst ISO", "Potpune DVD slike", "Live slike (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Slike za oblak", "Službene Debianove slike za oblak", "Platforme i dokumentacija za oblak", "Instalacija i provjera", "Poslužitelji za preuzimanje i torrenti", "Provjera autentičnosti slike", "Priručnik za instalaciju", "Napomene o izdanju"],
+  cs: ["Další způsoby, jak získat Debian", "Najděte oficiální obrazy, cloudové možnosti, pokyny k instalaci a zdroje pro ověření.", "Instalační obrazy", "64bitový PC netinst ISO", "Kompletní obrazy DVD", "Live obrazy (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Cloudové obrazy", "Oficiální cloudové obrazy Debianu", "Cloudové platformy a dokumentace", "Instalace a ověření", "Zrcadla ke stažení a torrenty", "Ověření pravosti obrazu", "Instalační příručka", "Poznámky k vydání"],
+  da: ["Flere måder at hente Debian på", "Find officielle billeder, cloudmuligheder, installationsvejledninger og ressourcer til verifikation.", "Installationsbilleder", "64-bit pc netinst-ISO", "Komplette dvd-billeder", "Live-billeder (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Cloudbilleder", "Officielle Debian-cloudbilleder", "Cloudplatforme og dokumentation", "Installation og verifikation", "Download-spejle og torrents", "Kontrollér billedets ægthed", "Installationsvejledning", "Udgivelsesnoter"],
+  nl: ["Meer manieren om Debian te verkrijgen", "Bekijk officiële images, cloudopties, installatie-instructies en verificatiebronnen.", "Installatie-images", "64-bits pc-netinst-ISO", "Complete dvd-images", "Live-images (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Cloud-images", "Officiële Debian-cloudimages", "Cloudplatformen en documentatie", "Installeren en verifiëren", "Downloadspiegels en torrents", "Controleer de authenticiteit van de image", "Installatiehandleiding", "Release-opmerkingen"],
+  fi: ["Lisää tapoja hankkia Debian", "Löydä viralliset levykuvat, pilvivaihtoehdot sekä asennus- ja varmennusohjeet.", "Asennuslevykuvat", "64-bittisen PC:n netinst-ISO", "Täydelliset DVD-levykuvat", "Live-levykuvat (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Pilvilevykuvat", "Debianin viralliset pilvilevykuvat", "Pilvialustat ja dokumentaatio", "Asennus ja varmennus", "Latauspalvelimet ja torrentit", "Varmista levykuvan aitous", "Asennusopas", "Julkaisutiedot"],
+  fr: ["Autres façons d’obtenir Debian", "Trouvez les images officielles, les options cloud, les instructions d’installation et les ressources de vérification.", "Images d’installation", "Image ISO netinst pour PC 64 bits", "Images DVD complètes", "Images Live (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Images cloud", "Images cloud officielles de Debian", "Plateformes cloud et documentation", "Installation et vérification", "Miroirs de téléchargement et torrents", "Vérifier l’authenticité de l’image", "Manuel d’installation", "Notes de publication"],
+  gl: ["Máis formas de obter Debian", "Atopa imaxes oficiais, opcións na nube, instrucións de instalación e recursos de verificación.", "Imaxes de instalación", "ISO netinst para PC de 64 bits", "Imaxes completas en DVD", "Imaxes Live (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Imaxes para a nube", "Imaxes oficiais de Debian para a nube", "Plataformas e documentación na nube", "Instalación e verificación", "Espellos de descarga e torrents", "Verificar a autenticidade da imaxe", "Manual de instalación", "Notas da versión"],
+  de: ["Weitere Möglichkeiten, Debian zu beziehen", "Hier findest du offizielle Images, Cloud-Optionen sowie Anleitungen zur Installation und Überprüfung.", "Installations-Images", "64-Bit-PC-netinst-ISO", "Vollständige DVD-Images", "Live-Images (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Cloud-Images", "Offizielle Debian-Cloud-Images", "Cloud-Plattformen und Dokumentation", "Installation und Überprüfung", "Download-Spiegel und Torrents", "Echtheit des Images überprüfen", "Installationshandbuch", "Veröffentlichungshinweise"],
+  el: ["Περισσότεροι τρόποι απόκτησης του Debian", "Βρείτε επίσημα είδωλα, επιλογές cloud, οδηγίες εγκατάστασης και πόρους επαλήθευσης.", "Είδωλα εγκατάστασης", "ISO netinst για PC 64-bit", "Πλήρη είδωλα DVD", "Live είδωλα (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Είδωλα cloud", "Επίσημα είδωλα cloud του Debian", "Πλατφόρμες cloud και τεκμηρίωση", "Εγκατάσταση και επαλήθευση", "Καθρέφτες λήψης και torrents", "Επαλήθευση αυθεντικότητας ειδώλου", "Εγχειρίδιο εγκατάστασης", "Σημειώσεις έκδοσης"],
+  hu: ["A Debian beszerzésének további módjai", "Hivatalos lemezképek, felhőlehetőségek, telepítési útmutatók és ellenőrzési források.", "Telepítőlemezképek", "64 bites PC netinst ISO", "Teljes DVD-lemezképek", "Live lemezképek (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Felhőlemezképek", "Hivatalos Debian felhőlemezképek", "Felhőplatformok és dokumentáció", "Telepítés és ellenőrzés", "Letöltési tükrök és torrentek", "Lemezkép hitelességének ellenőrzése", "Telepítési kézikönyv", "Kiadási megjegyzések"],
+  id: ["Cara lain untuk mendapatkan Debian", "Temukan image resmi, opsi cloud, petunjuk instalasi, dan sumber verifikasi.", "Image instalasi", "ISO netinst PC 64-bit", "Image DVD lengkap", "Image Live (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Image cloud", "Image cloud resmi Debian", "Platform cloud dan dokumentasi", "Instalasi dan verifikasi", "Mirror unduhan dan torrent", "Verifikasi keaslian image", "Panduan instalasi", "Catatan rilis"],
+  it: ["Altri modi per ottenere Debian", "Trova immagini ufficiali, opzioni cloud, istruzioni di installazione e risorse di verifica.", "Immagini di installazione", "ISO netinst per PC a 64 bit", "Immagini DVD complete", "Immagini Live (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Immagini cloud", "Immagini cloud ufficiali Debian", "Piattaforme cloud e documentazione", "Installazione e verifica", "Mirror di download e torrent", "Verifica l’autenticità dell’immagine", "Manuale di installazione", "Note di rilascio"],
+  ja: ["Debianを入手するその他の方法", "公式イメージ、クラウドの選択肢、インストール手順、検証情報をご覧ください。", "インストールイメージ", "64ビットPC用netinst ISO", "DVDイメージ（全収録）", "Liveイメージ（GNOME、KDE、Xfce、LXDE、Cinnamon、MATE）", "クラウドイメージ", "Debian公式クラウドイメージ", "クラウドプラットフォームとドキュメント", "インストールと検証", "ダウンロードミラーとTorrent", "イメージの真正性を検証", "インストールマニュアル", "リリースノート"],
+  ko: ["Debian을 얻는 다른 방법", "공식 이미지, 클라우드 옵션, 설치 안내 및 검증 자료를 확인하세요.", "설치 이미지", "64비트 PC netinst ISO", "전체 DVD 이미지", "Live 이미지(GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "클라우드 이미지", "Debian 공식 클라우드 이미지", "클라우드 플랫폼 및 문서", "설치 및 검증", "다운로드 미러 및 토렌트", "이미지 진위 확인", "설치 안내서", "릴리스 노트"],
+  nb: ["Flere måter å få Debian på", "Finn offisielle avbilder, skyalternativer, installasjonsinstruksjoner og verifiseringsressurser.", "Installasjonsavbilder", "64-biters PC-netinst-ISO", "Komplette DVD-avbilder", "Live-avbilder (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Skyavbilder", "Offisielle Debian-skyavbilder", "Skyplattformer og dokumentasjon", "Installer og verifiser", "Nedlastingsspeil og torrenter", "Bekreft avbildets ekthet", "Installasjonsmanual", "Utgivelsesnotater"],
+  fa: ["راه‌های دیگر دریافت دبیان", "تصاویر رسمی، گزینه‌های ابری، دستورالعمل نصب و منابع بررسی را پیدا کنید.", "تصاویر نصب", "ایزوی netinst برای رایانه ۶۴ بیتی", "تصاویر کامل DVD", "تصاویر زنده (GNOME، KDE، Xfce، LXDE، Cinnamon، MATE)", "تصاویر ابری", "تصاویر رسمی ابری دبیان", "سکوهای ابری و مستندات", "نصب و بررسی", "آینه‌های دریافت و تورنت‌ها", "اصالت تصویر را بررسی کنید", "راهنمای نصب", "یادداشت‌های انتشار"],
+  pl: ["Inne sposoby na pobranie Debiana", "Znajdź oficjalne obrazy, opcje chmurowe, instrukcje instalacji i materiały weryfikacyjne.", "Obrazy instalacyjne", "ISO netinst dla 64-bitowego komputera PC", "Pełne obrazy DVD", "Obrazy Live (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Obrazy chmurowe", "Oficjalne obrazy chmurowe Debiana", "Platformy chmurowe i dokumentacja", "Instalacja i weryfikacja", "Serwery lustrzane i torrenty", "Sprawdź autentyczność obrazu", "Podręcznik instalacji", "Informacje o wydaniu"],
+  pt: ["Outras formas de obter o Debian", "Encontre imagens oficiais, opções de nuvem, instruções de instalação e recursos de verificação.", "Imagens de instalação", "ISO netinst para PC de 64 bits", "Imagens completas de DVD", "Imagens Live (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Imagens para a nuvem", "Imagens oficiais do Debian para a nuvem", "Plataformas e documentação na nuvem", "Instalação e verificação", "Espelhos de download e torrents", "Verificar a autenticidade da imagem", "Manual de instalação", "Notas de lançamento"],
+  ro: ["Alte modalități de a obține Debian", "Găsiți imagini oficiale, opțiuni cloud, instrucțiuni de instalare și resurse de verificare.", "Imagini de instalare", "ISO netinst pentru PC pe 64 de biți", "Imagini DVD complete", "Imagini Live (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Imagini cloud", "Imagini cloud oficiale Debian", "Platforme cloud și documentație", "Instalare și verificare", "Oglinzi de descărcare și torrente", "Verificați autenticitatea imaginii", "Manual de instalare", "Note de lansare"],
+  ru: ["Другие способы получить Debian", "Найдите официальные образы, облачные варианты, инструкции по установке и материалы для проверки.", "Установочные образы", "64-разрядный PC netinst ISO", "Полные образы DVD", "Live-образы (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Образы для облака", "Официальные облачные образы Debian", "Облачные платформы и документация", "Установка и проверка", "Зеркала загрузки и торренты", "Проверить подлинность образа", "Руководство по установке", "Примечания к выпуску"],
+  sk: ["Ďalšie spôsoby, ako získať Debian", "Nájdite oficiálne obrazy, cloudové možnosti, pokyny na inštaláciu a zdroje na overenie.", "Inštalačné obrazy", "64-bitový PC netinst ISO", "Kompletné obrazy DVD", "Live obrazy (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Cloudové obrazy", "Oficiálne cloudové obrazy Debianu", "Cloudové platformy a dokumentácia", "Inštalácia a overenie", "Zrkadlá na stiahnutie a torrenty", "Overiť pravosť obrazu", "Inštalačná príručka", "Poznámky k vydaniu"],
+  es: ["Más formas de obtener Debian", "Consulta imágenes oficiales, opciones para la nube, instrucciones de instalación y verificación.", "Imágenes de instalación", "Imagen netinst para PC de 64 bits", "Imágenes completas en DVD", "Imágenes Live (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Imágenes para la nube", "Imágenes oficiales de Debian para la nube", "Plataformas y documentación para la nube", "Instalación y verificación", "Servidores de descarga y torrents", "Verificar la autenticidad de las imágenes", "Manual de instalación", "Notas de publicación"],
+  sv: ["Fler sätt att skaffa Debian", "Hitta officiella avbilder, molnalternativ, installationsanvisningar och verifieringsresurser.", "Installationsavbilder", "64-bitars PC-netinst-ISO", "Fullständiga DVD-avbilder", "Live-avbilder (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Molnavbilder", "Officiella Debian-molnavbilder", "Molnplattformar och dokumentation", "Installation och verifiering", "Nedladdningsspeglar och torrenter", "Verifiera avbildens äkthet", "Installationshandbok", "Versionsinformation"],
+  tr: ["Debian edinmenin diğer yolları", "Resmî kalıpları, bulut seçeneklerini, kurulum talimatlarını ve doğrulama kaynaklarını bulun.", "Kurulum kalıpları", "64 bit PC netinst ISO", "Tam DVD kalıpları", "Live kalıpları (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Bulut kalıpları", "Resmî Debian bulut kalıpları", "Bulut platformları ve belgeleri", "Kurulum ve doğrulama", "İndirme yansıları ve torrentler", "Kalıbın gerçekliğini doğrulayın", "Kurulum kılavuzu", "Sürüm notları"],
+  uk: ["Інші способи отримати Debian", "Знайдіть офіційні образи, хмарні варіанти, інструкції зі встановлення та ресурси для перевірки.", "Образи для встановлення", "64-бітний PC netinst ISO", "Повні образи DVD", "Live-образи (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Хмарні образи", "Офіційні хмарні образи Debian", "Хмарні платформи та документація", "Встановлення та перевірка", "Дзеркала завантаження та торенти", "Перевірити справжність образу", "Посібник зі встановлення", "Примітки до випуску"],
+  vi: ["Các cách khác để tải Debian", "Tìm image chính thức, tùy chọn đám mây, hướng dẫn cài đặt và tài nguyên xác minh.", "Image cài đặt", "ISO netinst cho PC 64-bit", "Image DVD đầy đủ", "Image Live (GNOME, KDE, Xfce, LXDE, Cinnamon, MATE)", "Image đám mây", "Image đám mây chính thức của Debian", "Nền tảng đám mây và tài liệu", "Cài đặt và xác minh", "Mirror tải xuống và torrent", "Xác minh tính xác thực của image", "Sổ tay cài đặt", "Ghi chú phát hành"],
+};
+
+const artworkKeys = ["heroArtwork"] as const;
+const artworkTranslations: TranslationCatalog<typeof artworkKeys> = {
+  ar: ["العمل الفني"],
+  bg: ["Илюстрация"],
+  ca: ["Il·lustració"],
+  "zh-CN": ["插画"],
+  "zh-TW": ["插畫"],
+  hr: ["Ilustracija"],
+  cs: ["Ilustrace"],
+  da: ["Illustration"],
+  nl: ["Illustratie"],
+  fi: ["Kuvitus"],
+  fr: ["Illustration"],
+  gl: ["Ilustración"],
+  de: ["Artwork"],
+  el: ["Εικονογράφηση"],
+  hu: ["Illusztráció"],
+  id: ["Ilustrasi"],
+  it: ["Illustrazione"],
+  ja: ["アートワーク"],
+  ko: ["아트워크"],
+  nb: ["Illustrasjon"],
+  fa: ["اثر هنری"],
+  pl: ["Ilustracja"],
+  pt: ["Ilustração"],
+  ro: ["Ilustrație"],
+  ru: ["Иллюстрация"],
+  sk: ["Ilustrácia"],
+  es: ["Ilustración"],
+  sv: ["Illustration"],
+  tr: ["Çizim"],
+  uk: ["Ілюстрація"],
+  vi: ["Tác phẩm minh họa"],
+};
+
+const headerNavigationKeys = [
+  "mainNavigation",
+  "headerBlog",
+  "headerMicronews",
+  "headerPlanet",
+  "headerWiki",
+] as const;
+const headerNavigationTranslations: TranslationCatalog<typeof headerNavigationKeys> = {
+  ar: ["التنقل الرئيسي", "مدونة", "أخبار Debian القصيرة", "كوكب Debian", "ويكي Debian"],
+  bg: ["Основна навигация", "Блог", "Кратки новини на Debian", "Планетата на Debian", "Уики на Debian"],
+  ca: ["Navegació principal", "Blog", "Micronotícies", "Planeta", "Viqui"],
+  "zh-CN": ["主导航", "博客", "Debian 微新闻", "Debian 星球", "维基"],
+  "zh-TW": ["主導覽", "部落格", "Debian 微新聞", "Debian 星球", "維基"],
+  hr: ["Glavna navigacija", "Blog", "Kratke vijesti", "Planet", "Wiki"],
+  cs: ["Hlavní navigace", "Blog", "Krátké zprávy Debianu", "Planeta Debian", "Wiki"],
+  da: ["Hovednavigation", "Blog", "Debians mikronyheder", "Debians planet", "Wiki"],
+  nl: ["Hoofdnavigatie", "Blog", "Debian-micronieuws", "Debian Planet", "Wiki"],
+  fi: ["Päänavigointi", "Blogi", "Debianin pikauutiset", "Debian-planeetta", "Wiki"],
+  fr: ["Navigation principale", "Blog", "Brèves de Debian", "Planète Debian", "Wiki"],
+  gl: ["Navegación principal", "Blog", "Micronovas de Debian", "Planeta", "Wiki"],
+  de: ["Hauptnavigation", "Blog", "Debian-Mikronachrichten", "Debian-Planet", "Wiki"],
+  el: ["Κύρια πλοήγηση", "Ιστολόγιο", "Σύντομες ειδήσεις Debian", "Πλανήτης Debian", "Wiki"],
+  hu: ["Fő navigáció", "Blog", "Debian rövid hírek", "Debian bolygó", "Wiki"],
+  id: ["Navigasi utama", "Blog", "Berita singkat Debian", "Planet Debian", "Wiki"],
+  it: ["Navigazione principale", "Blog", "Brevi notizie Debian", "Pianeta Debian", "Wiki"],
+  ja: ["メインナビゲーション", "ブログ", "Debianマイクロニュース", "Debian Planet", "Wiki"],
+  ko: ["기본 탐색", "블로그", "Debian 마이크로뉴스", "Debian 플래닛", "위키"],
+  nb: ["Hovednavigasjon", "Blogg", "Debians mikronyheter", "Debian-planeten", "Wiki"],
+  fa: ["پیمایش اصلی", "وبلاگ", "اخبار کوتاه دبیان", "سیاره دبیان", "ویکی"],
+  pl: ["Nawigacja główna", "Blog", "Mikrowiadomości Debiana", "Planeta Debiana", "Wiki"],
+  pt: ["Navegação principal", "Blog", "Micronotícias Debian", "Planeta Debian", "Wiki"],
+  ro: ["Navigare principală", "Blog", "Știri scurte Debian", "Planeta Debian", "Wiki"],
+  ru: ["Основная навигация", "Блог", "Короткие новости Debian", "Планета Debian", "Вики"],
+  sk: ["Hlavná navigácia", "Blog", "Krátke správy Debianu", "Planéta Debian", "Wiki"],
+  es: ["Navegación principal", "Blog", "Micronoticias", "Planeta", "Wiki"],
+  sv: ["Huvudnavigering", "Blogg", "Debians mikronyheter", "Debianplaneten", "Wiki"],
+  tr: ["Ana gezinme", "Blog", "Debian kısa haberleri", "Debian Gezegeni", "Wiki"],
+  uk: ["Основна навігація", "Блог", "Короткі новини Debian", "Планета Debian", "Вікі"],
+  vi: ["Điều hướng chính", "Blog", "Tin ngắn Debian", "Hành tinh Debian", "Wiki"],
+};
+
 function validateCatalogs(
   keys: readonly MessageKey[],
   translations: Partial<Record<Locale, readonly string[]>>,
@@ -568,6 +716,9 @@ validateCatalogs(detailKeys, detailTranslations);
 validateCatalogs(releaseNewsKeys, releaseNewsTranslations);
 validateCatalogs(descriptionKeys, descriptionTranslations);
 validateCatalogs(communityKeys, communityTranslations);
+validateCatalogs(downloadResourceKeys, downloadResourceTranslations);
+validateCatalogs(artworkKeys, artworkTranslations);
+validateCatalogs(headerNavigationKeys, headerNavigationTranslations);
 const localeCatalogs: Array<Partial<Record<Locale, readonly string[]>>> = [
   coreTranslations,
   secondaryTranslations,
@@ -576,6 +727,9 @@ const localeCatalogs: Array<Partial<Record<Locale, readonly string[]>>> = [
   releaseNewsTranslations,
   descriptionTranslations,
   communityTranslations,
+  downloadResourceTranslations,
+  artworkTranslations,
+  headerNavigationTranslations,
 ];
 for (const locale of locales) {
   if (locale !== "en" && localeCatalogs.some((catalog) => !catalog[locale])) {
@@ -704,6 +858,30 @@ export function useLocale() {
     if (community) {
       communityKeys.forEach((key, index) => {
         if (community[index]) result[key] = community[index];
+      });
+    }
+    const downloadResources = catalogLocale
+      ? downloadResourceTranslations[catalogLocale]
+      : undefined;
+    if (downloadResources) {
+      downloadResourceKeys.forEach((key, index) => {
+        if (downloadResources[index]) result[key] = downloadResources[index];
+      });
+    }
+    const artwork = catalogLocale
+      ? artworkTranslations[catalogLocale]
+      : undefined;
+    if (artwork) {
+      artworkKeys.forEach((key, index) => {
+        if (artwork[index]) result[key] = artwork[index];
+      });
+    }
+    const headerNavigation = catalogLocale
+      ? headerNavigationTranslations[catalogLocale]
+      : undefined;
+    if (headerNavigation) {
+      headerNavigationKeys.forEach((key, index) => {
+        if (headerNavigation[index]) result[key] = headerNavigation[index];
       });
     }
     return {

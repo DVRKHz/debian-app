@@ -52,7 +52,7 @@ export function Hero() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="mt-2 text-right text-xs text-slate-500 dark:text-slate-500 light:text-slate-500">
-          Artwork: Ceratopsian by{" "}
+          {t("heroArtwork")}: Ceratopsian —{" "}
           <a
             href="https://wiki.debian.org/DebianArt/Themes/Ceratopsian"
             target="_blank"

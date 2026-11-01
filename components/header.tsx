@@ -5,6 +5,7 @@ import { Languages, Menu, Moon, Search, Sun, X } from "lucide-react";
 import { DebianMark } from "@/components/debian-mark";
 import {
   languageControlLabels,
+  type MessageKey,
   type Locale,
   localeNames,
   locales,
@@ -47,11 +48,11 @@ const debianSearchLanguages: Record<Locale, string> = {
   vi: "vi",
 };
 
-const links = [
-  { href: "https://bits.debian.org/", label: "Blog" },
-  { href: "https://micronews.debian.org/", label: "Micronoticias" },
-  { href: "https://planet.debian.org/", label: "Planeta" },
-  { href: "https://wiki.debian.org/", label: "Wiki" },
+const links: { href: string; label: MessageKey }[] = [
+  { href: "https://bits.debian.org/", label: "headerBlog" },
+  { href: "https://micronews.debian.org/", label: "headerMicronews" },
+  { href: "https://planet.debian.org/", label: "headerPlanet" },
+  { href: "https://wiki.debian.org/", label: "headerWiki" },
 ] as const;
 
 const controlButtonClass =
@@ -97,7 +98,7 @@ export function Header() {
 
         <nav
           className="hidden items-center gap-1 rounded-xl border border-slate-800/80 bg-slate-900/35 p-1 text-sm font-medium lg:flex dark:border-slate-800/80 dark:bg-slate-900/35 light:border-slate-200 light:bg-slate-100/70"
-          aria-label="Main navigation"
+          aria-label={t("mainNavigation")}
         >
           {links.map((link) => (
             <a
@@ -107,7 +108,7 @@ export function Header() {
               rel="noreferrer"
               className="rounded-lg px-3 py-2 text-slate-300 transition-colors hover:bg-slate-800/80 hover:text-white dark:text-slate-300 dark:hover:bg-slate-800/80 dark:hover:text-white light:text-slate-600 light:hover:bg-white light:hover:text-slate-950"
             >
-              {link.label}
+              {t(link.label)}
             </a>
           ))}
         </nav>
@@ -212,7 +213,7 @@ export function Header() {
       {menuOpen && (
         <nav
           className="border-t border-slate-800/80 bg-slate-950/95 px-4 py-4 dark:bg-slate-950/95 light:border-slate-200 light:bg-white lg:hidden"
-          aria-label="Main navigation"
+          aria-label={t("mainNavigation")}
         >
           <div className="mx-auto grid max-w-7xl gap-1 sm:grid-cols-2">
             {links.map((link) => (
@@ -224,7 +225,7 @@ export function Header() {
                 onClick={() => setMenuOpen(false)}
                 className="rounded-xl px-3 py-3 text-sm font-semibold text-slate-200 transition-colors hover:bg-slate-800/70 hover:text-white dark:text-slate-200 dark:hover:bg-slate-800/70 light:text-slate-700 light:hover:bg-slate-100 light:hover:text-slate-950"
               >
-                {link.label}
+                {t(link.label)}
               </a>
             ))}
           </div>
