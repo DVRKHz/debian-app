@@ -1,126 +1,129 @@
-# Debian — Sitio de presentación
+# Debian Landing Page
 
-Sitio web de presentación de Debian creado con Next.js App Router, React,
-TypeScript y Tailwind CSS. Reúne información del proyecto, noticias oficiales
-y enlaces para elegir y descargar imágenes de Debian desde sus servidores.
+[![Next.js](https://img.shields.io/badge/Next.js-App_Router-black?logo=nextdotjs)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue?logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-20.9%2B-5FA04E?logo=nodedotjs)](https://nodejs.org/)
 
-## Funcionalidades
+A Debian showcase website built with Next.js App Router, React, TypeScript, and
+Tailwind CSS. It brings together project information, official Debian news, and
+links for choosing and downloading Debian installation images.
 
-- **Página de inicio:** hero con artwork de Debian, información de la comunidad,
-  carrusel de imágenes y noticias recientes del proyecto.
-- **Noticias oficiales:** obtiene los anuncios del feed de Debian News, muestra
-  los tres más recientes y almacena la respuesta en caché durante una hora.
-- **Descargas:** permite seleccionar la rama, arquitectura e instalador. Netinst
-  está disponible para las arquitecturas incluidas en el selector; las imágenes
-  Live están disponibles para amd64.
-- **Resolución de imágenes:** encuentra la imagen Stable vigente en el manifiesto
-  oficial `SHA512SUMS`; para Testing utiliza las imágenes semanales. Las ISO se
-  descargan directamente desde los servidores de Debian.
-- **Ramas de publicación:** páginas con información de Stable y Testing en
-  `/releases`.
-- **Búsqueda:** conecta con el buscador oficial de Debian y envía el idioma
-  seleccionado.
-- **Tema e idioma:** controles para cambiar entre tema claro y oscuro y escoger
-  el idioma. La preferencia de idioma puede seguir el idioma del navegador o
-  guardarse manualmente en el almacenamiento local.
-- **Localización:** admite árabe, búlgaro, catalán, chino simplificado y
-  tradicional, croata, checo, danés, neerlandés, inglés, finés, francés,
-  gallego, alemán, griego, húngaro, indonesio, italiano, japonés, coreano,
-  noruego bokmål, persa, polaco, portugués, rumano, ruso, eslovaco, español,
-  sueco, turco, ucraniano y vietnamita. También actualiza el idioma y la
-  dirección de escritura de la página, incluido RTL para árabe y persa.
-- **Navegación accesible:** incluye controles de carrusel, foco visible y
-  transiciones que respetan la preferencia del sistema para reducir el
-  movimiento.
-- **Identidad del sitio:** incluye metadatos de página y el favicon con la marca
-  de Debian.
+## ✨ Features
 
-## Requisitos
+- 🏠 **Homepage:** Debian artwork, project and community information, a photo
+  carousel, and recent Debian news.
+- 📰 **Official news:** Fetches the Debian News feed, displays the three latest
+  announcements, and revalidates the feed hourly.
+- 💿 **Image selector:** Choose a release branch, architecture, and installer.
+  Netinst images are available for six architectures; Live images are available
+  for amd64.
+- 🔗 **Download resolution:** Finds the current Stable image in Debian's official
+  `SHA512SUMS` manifest and uses weekly images for Testing. ISO files are
+  downloaded directly from Debian's servers.
+- 📦 **Release information:** Dedicated pages for the Stable and Testing branches
+  at `/releases`.
+- 🔎 **Search:** Uses Debian's official search and passes along the selected
+  language.
+- 🌗 **Theme and language preferences:** Switch between light and dark themes and
+  choose a language. Language can follow the browser or be saved locally.
+- 🌍 **Localization:** Supports Arabic, Bulgarian, Catalan, Simplified and
+  Traditional Chinese, Croatian, Czech, Danish, Dutch, English, Finnish,
+  French, Galician, German, Greek, Hungarian, Indonesian, Italian, Japanese,
+  Korean, Norwegian Bokmål, Persian, Polish, Portuguese, Romanian, Russian,
+  Slovak, Spanish, Swedish, Turkish, Ukrainian, and Vietnamese. The page
+  language and text direction are updated as appropriate, including RTL for
+  Arabic and Persian.
+- ♿ **Accessibility:** Visible focus styles, carousel controls, and motion
+  preferences that respect the operating system's reduced-motion setting.
 
-- Node.js 20.9 o posterior.
-- npm.
+## 🧰 Requirements
 
-## Desarrollo local
+- Node.js 20.9 or later
+- npm
 
-Clona el repositorio y ejecuta:
+## 🚀 Getting started
+
+Install dependencies and start the development server:
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000).
 
-## Compilación y ejecución
+## 🏗️ Build and run
 
 ```bash
 npm run build
 npm run start
 ```
 
-El servidor de producción se inicia en el puerto `3000` de forma predeterminada.
+The production server listens on port `3000` by default.
 
-## Despliegue en Vercel
+## ☁️ Deployment
 
-Importa el repositorio en Vercel y conserva los valores detectados para Next.js.
-La raíz del proyecto es `./`; no se requieren variables de entorno ni una
-configuración de salida estática. Vercel puede compilar la aplicación con los
-comandos predeterminados de Next.js.
+This app can be deployed to Vercel. Import the repository and keep the detected
+Next.js settings. The project root is `./`, and no environment variables or
+static-export configuration are required.
 
-La aplicación necesita un entorno que admita rutas de servidor y revalidación
-incremental para cargar las noticias y resolver las imágenes de descarga. En
-Vercel, estas funcionalidades se admiten de forma nativa. Tras el despliegue,
-comprueba `/`, `/download`, `/releases` y `/api/download`.
+The app uses server routes and incremental revalidation to load news and resolve
+download images, so deploy it to a platform that supports these Next.js
+features. After deployment, check `/`, `/download`, `/releases`, and
+`/api/download`.
 
-## Rutas principales
+## 🧭 Main routes
 
-| Ruta | Descripción |
+| Route | Description |
 | --- | --- |
-| `/` | Página de inicio, comunidad y noticias |
-| `/download` | Selector de imágenes y recursos de descarga |
-| `/releases` | Información sobre las ramas de publicación |
-| `/api/download` | Resuelve los datos de la imagen según la selección |
+| `/` | Homepage, community information, and recent news |
+| `/download` | Image selector and download resources |
+| `/releases` | Stable and Testing release information |
+| `/api/download` | Resolves an image URL from the selected options |
 
-La API de descarga recibe `branch`, `architecture` y `media`. Por ejemplo:
+The download API accepts `branch`, `architecture`, and `media` query
+parameters. For example:
 
 ```text
 /api/download?branch=stable&architecture=amd64&media=netinst
 ```
 
-Devuelve el nombre y la URL oficial de la imagen; no actúa como proxy ni aloja
-los archivos ISO. Las selecciones no válidas producen un error HTTP.
+It returns the image filename and official download URL; it does not proxy or
+host ISO files. Invalid selections return an HTTP error.
 
-## Estructura del proyecto
+## 🗂️ Project structure
 
 ```text
 app/
-  api/download/route.ts   Resolución de imágenes de Debian
-  download/page.tsx       Página de descargas
-  releases/page.tsx       Página de ramas de publicación
+  api/download/route.ts   Resolves Debian image downloads
+  download/page.tsx       Download page
+  releases/page.tsx       Release information page
   icon.svg                Favicon
-  layout.tsx              Layout y metadatos globales
-  page.tsx                Página de inicio
-  globals.css             Estilos globales y transición de navegación
+  layout.tsx              Root layout and metadata
+  page.tsx                Homepage
+  globals.css             Global styles
 components/
-  community.tsx           Carrusel y enlaces de la comunidad
-  download-resources.tsx  Enlaces oficiales para obtener Debian
-  download-selector.tsx   Selector de imágenes
-  footer.tsx              Pie de página
-  header.tsx              Navegación, búsqueda, idioma y tema
-  hero.tsx                Hero y estadísticas
-  news.tsx                Tarjetas de noticias
-  releases.tsx            Información de las ramas
+  community.tsx           Community links and photo carousel
+  download-resources.tsx  Official Debian download resources
+  download-selector.tsx   Image selector
+  footer.tsx              Site footer
+  header.tsx              Navigation, search, language, and theme controls
+  hero.tsx                Hero section and statistics
+  news.tsx                News cards
+  releases.tsx            Release information
 lib/
-  debian-news.ts          Lectura y validación del feed de noticias
-  download.ts             Tipos y validación de opciones de descarga
-  i18n.tsx                Idiomas, detección y preferencias
+  debian-news.ts          Debian News feed parsing and validation
+  download.ts             Download option types and validation
+  i18n.tsx                Languages, detection, and preferences
 ```
 
-## Tecnologías
+## 🛠️ Tech stack
 
-- [Next.js](https://nextjs.org/) con App Router
-- [React](https://react.dev/) y [TypeScript](https://www.typescriptlang.org/)
+- [Next.js](https://nextjs.org/) with the App Router
+- [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser) para
-  procesar el feed RDF/XML de noticias
-- [Lucide](https://lucide.dev/) para iconos
+- [fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser) for
+  parsing the Debian News RDF/XML feed
+- [Lucide](https://lucide.dev/) for icons
