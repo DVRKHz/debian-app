@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Debian — El Sistema Operativo Universal",
+  title: "Debian — El sistema operativo universal",
   description:
     "Descubre Debian: un sistema operativo libre, abierto y comunitario para servidores, equipos de escritorio y mucho más.",
 };

@@ -8,6 +8,12 @@ import {
 } from "@/lib/download";
 
 const imageHost = "https://cdimage.debian.org";
+const packageRepositoryHost = "https://deb.debian.org/debian";
+
+type ReleaseMetadata = {
+  codename: string;
+  version?: string;
+};
 
 function getDirectory({ branch, architecture, media }: DownloadConfig) {
   if (media === "netinst") {
@@ -46,6 +52,41 @@ function findFilename(manifest: string, pattern: RegExp): string | undefined {
   }
 }
 
+async function getReleaseMetadata(
+  branch: DownloadConfig["branch"],
+): Promise<ReleaseMetadata | undefined> {
+  try {
+    const response = await fetch(
+      `${packageRepositoryHost}/dists/${branch}/InRelease`,
+      {
+        next: { revalidate: 3600 },
+        signal: AbortSignal.timeout(10_000),
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Release metadata request failed with status ${response.status}.`,
+      );
+    }
+
+    const metadata = await response.text();
+    const codename = metadata.match(/^Codename:\s*([a-z]+)\s*$/m)?.[1];
+    if (!codename) {
+      throw new Error(`No Debian codename found in ${branch} release metadata.`);
+    }
+    const version = metadata.match(/^Version:\s*(\d+\.\d+)\s*$/m)?.[1];
+
+    return {
+      codename: codename[0].toUpperCase() + codename.slice(1),
+      version,
+    };
+  } catch (error) {
+    console.error(`Unable to resolve Debian ${branch} release metadata.`, error);
+    return undefined;
+  }
+}
+
 export async function GET(request: Request) {
   const params = new URL(request.url).searchParams;
   const branch = params.get("branch");
@@ -72,17 +113,25 @@ export async function GET(request: Request) {
 
   if (branch === "testing") {
     const filename = getTestingFilename(config);
+    const releaseMetadata = await getReleaseMetadata(branch);
     return Response.json(
-      { filename, url: `${directory}/${filename}` },
+      {
+        filename,
+        url: `${directory}/${filename}`,
+        codename: releaseMetadata?.codename,
+      },
       { headers: { "Cache-Control": "no-store" } },
     );
   }
 
   try {
-    const response = await fetch(`${directory}/SHA512SUMS`, {
-      cache: "no-store",
-      signal: AbortSignal.timeout(10_000),
-    });
+    const [response, releaseMetadata] = await Promise.all([
+      fetch(`${directory}/SHA512SUMS`, {
+        cache: "no-store",
+        signal: AbortSignal.timeout(10_000),
+      }),
+      getReleaseMetadata(branch),
+    ]);
 
     if (!response.ok) {
       console.error(`Debian checksum manifest request failed: ${response.status}`);
@@ -106,8 +155,21 @@ export async function GET(request: Request) {
       );
     }
 
+    const imageVersion = filename.match(
+      /^debian-(?:live-)?(\d+\.\d+)(?:\.\d+)?-/,
+    )?.[1];
+    const codename =
+      imageVersion && releaseMetadata?.version === imageVersion
+        ? releaseMetadata.codename
+        : undefined;
+    if (releaseMetadata && !codename) {
+      console.error(
+        `Debian ${branch} image version ${imageVersion ?? "unknown"} does not match release metadata.`,
+      );
+    }
+
     return Response.json(
-      { filename, url: `${directory}/${filename}` },
+      { filename, url: `${directory}/${filename}`, codename },
       { headers: { "Cache-Control": "no-store" } },
     );
   } catch (error) {

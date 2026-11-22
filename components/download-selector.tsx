@@ -15,6 +15,7 @@ import { useLocale } from "@/lib/i18n";
 type ResolvedDownload = {
   filename: string;
   url: string;
+  codename?: string;
 };
 
 function isResolvedDownload(value: unknown): value is ResolvedDownload {
@@ -23,8 +24,39 @@ function isResolvedDownload(value: unknown): value is ResolvedDownload {
   return (
     typeof value.filename === "string" &&
     typeof value.url === "string" &&
-    value.url.startsWith("https://cdimage.debian.org/")
+    value.url.startsWith("https://cdimage.debian.org/") &&
+    (!("codename" in value) ||
+      (typeof value.codename === "string" &&
+        /^[A-Za-z]+$/.test(value.codename)))
   );
+}
+
+function getStableVersion(filename: string): string | null {
+  return filename.match(/^debian-(?:live-)?(\d+\.\d+)(?:\.\d+)?-/)?.[1] ?? null;
+}
+
+function getReleaseOptionLabel(
+  label: string,
+  version: string | null,
+  codename: string | null,
+): string {
+  const versionPattern = /\p{N}+(?:\.\p{N}+)*/u;
+  const codenamePattern = /\([^)]*\)/;
+  let result = label;
+
+  if (versionPattern.test(result)) {
+    result = result.replace(versionPattern, version ?? "");
+  }
+  if (codenamePattern.test(result)) {
+    result = result.replace(
+      codenamePattern,
+      codename ? `(${codename})` : "",
+    );
+  } else if (codename) {
+    result = `${result} (${codename})`;
+  }
+
+  return result.replace(/\s+/g, " ").replace(/\s+([-–—])/g, " $1").trim();
 }
 
 type DownloadSelectorProps = {
@@ -46,9 +78,23 @@ export function DownloadSelector({
   const [resolvedDownload, setResolvedDownload] = useState<
     (ResolvedDownload & { configKey: string }) | null
   >(null);
+  const [stableVersion, setStableVersion] = useState<string | null>(null);
+  const [releaseCodenames, setReleaseCodenames] = useState<
+    Partial<Record<ReleaseBranch, string>>
+  >({});
   const [downloadResolveError, setDownloadResolveError] = useState(false);
   const currentDownload =
     resolvedDownload?.configKey === configKey ? resolvedDownload : null;
+  const stableOptionLabel = getReleaseOptionLabel(
+    t("stableOption"),
+    stableVersion,
+    releaseCodenames.stable ?? null,
+  );
+  const testingOptionLabel = getReleaseOptionLabel(
+    t("testingOption"),
+    null,
+    releaseCodenames.testing ?? null,
+  );
 
   useEffect(() => {
     const controller = new AbortController();
@@ -68,6 +114,16 @@ export function DownloadSelector({
           throw new Error("Debian image lookup returned an invalid response.");
         }
 
+        if (config.branch === "stable") {
+          const version = getStableVersion(result.filename);
+          if (version) setStableVersion(version);
+        }
+        if (result.codename) {
+          setReleaseCodenames((current) => ({
+            ...current,
+            [config.branch]: result.codename,
+          }));
+        }
         setResolvedDownload({ ...result, configKey });
       } catch (error) {
         if (controller.signal.aborted) return;
@@ -113,8 +169,8 @@ export function DownloadSelector({
                 }
                 className={selectClass}
               >
-                <option value="stable">{t("stableOption")}</option>
-                <option value="testing">{t("testingOption")}</option>
+                <option value="stable">{stableOptionLabel}</option>
+                <option value="testing">{testingOptionLabel}</option>
               </select>
             </label>
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-400 light:text-slate-600">

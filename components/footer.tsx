@@ -24,7 +24,7 @@ export function Footer() {
             <span className="text-xl font-bold leading-none tracking-tight text-white dark:text-white light:text-slate-900">
               debian
             </span>
-            <span className="mt-0.5 text-[10px] font-semibold uppercase tracking-widest text-debian">
+            <span className="mt-0.5 text-[10px] font-semibold tracking-widest text-debian">
               {t("universalOS")}
             </span>
           </span>
